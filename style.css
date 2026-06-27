@@ -20,11 +20,7 @@ body {
 }
 
 .profile {
-  position: fixed;
-  top: 16px;
-  left: 16px;
-  z-index: 50;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 10px;
   background: var(--card);
@@ -122,8 +118,29 @@ body {
 }
 .wrap { max-width: 900px; margin: 0 auto; }
 
-.top { margin-bottom: 24px; }
-.top h1 { margin: 0 0 16px; font-size: 1.6rem; }
+.top {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  margin-bottom: 24px;
+  padding: 16px 0;
+  background: var(--bg);
+}
+.title-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+.title-row h1 { margin: 0; font-size: 1.6rem; }
+.top__controls {
+  display: flex;
+  align-items: flex-end;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.top__controls .field { max-width: 260px; margin-bottom: 0; }
+.top__controls .check { padding-bottom: 11px; }
 .top .field { max-width: 260px; }
 
 .cards {

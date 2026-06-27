@@ -150,13 +150,29 @@ function gerarTexto(lang) {
     .join("\n\n========================\n\n");
 }
 
+const GERACAO = {
+  pt: { ambas: "Ambas gerações", antiga: "Antiga geração", nova: "Nova geração" },
+  en: { ambas: "Both generations", antiga: "Old generation", nova: "New generation" },
+};
+const PLATAFORMA = { xbox: "Xbox", playstation: "PlayStation" };
+
+function cabecalho(lang) {
+  const contaMod = document.getElementById("conta-mod").checked;
+  const geracao = document.getElementById("geracao").value;
+  const plataforma = document.getElementById("plataforma").value;
+  const conta = contaMod
+    ? (lang === "pt" ? "Conta Mod" : "Modded Account")
+    : (lang === "pt" ? "Conta OG" : "OG Account");
+  return `${PLATAFORMA[plataforma]} - ${GERACAO[lang][geracao]}\n${conta}\n\n`;
+}
+
 function gerarDescricao() {
   const pt = gerarTexto("pt");
   const en = gerarTexto("en");
   const texto =
-    "🇧🇷 PORTUGUÊS\n\n" + pt +
+    "🇧🇷 PORTUGUÊS\n\n" + cabecalho("pt") + pt +
     "\n\n\n========================================\n\n" +
-    "🇺🇸 ENGLISH\n\n" + en;
+    "🇺🇸 ENGLISH\n\n" + cabecalho("en") + en;
 
   output.textContent = texto;
   output.hidden = false;
