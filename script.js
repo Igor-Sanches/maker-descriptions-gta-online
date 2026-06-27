@@ -172,4 +172,13 @@ function gerarDescricao() {
 
 qtdSelect.addEventListener("change", () => render(Number(qtdSelect.value)));
 gerarBtn.addEventListener("click", gerarDescricao);
+
+const bannerClose = document.getElementById("banner-close");
+if (bannerClose) {
+  bannerClose.addEventListener("click", () => {
+    document.querySelector(".banner").classList.add("is-hidden");
+    document.querySelector(".page").style.paddingBottom = "32px";
+  });
+}
+
 render(Number(qtdSelect.value));
