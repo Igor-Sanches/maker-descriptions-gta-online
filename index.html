@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Personagens</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="profile">
+    <img class="profile__avatar" src="avatar.png" alt="x3str3ss4d0x">
+    <span class="profile__name">x3str3ss4d0x</span>
+    <a class="profile__ig" href="https://www.instagram.com/x3str3ss4d0x/" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram">
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+      </svg>
+    </a>
+  </header>
+
+  <main class="page">
+    <div class="wrap">
+      <header class="top">
+        <h1>Criação de Personagens</h1>
+        <div class="field">
+          <label for="qtd">Quantidade de personagens</label>
+          <select id="qtd">
+            <option value="1">1 Personagem</option>
+            <option value="2">2 Personagens</option>
+          </select>
+        </div>
+      </header>
+
+      <div class="cards" id="cards"></div>
+
+      <div class="footer">
+        <button type="button" id="gerar" class="btn btn--primary">Gerar Descrição</button>
+      </div>
+
+      <pre class="output" id="output" hidden></pre>
+    </div>
+  </main>
+
+  <footer class="banner">
+    <div class="banner__inner">
+      <div class="banner__text">
+        <strong>Quer criar um cartaz com as fotos do seu personagem ou veículos?</strong>
+        <span>Veja este projeto como exemplo e monte o seu.</span>
+      </div>
+      <a class="banner__btn" href="https://github.com/Igor-Sanches/criar-cartaz-gta-online" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">
+          <path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.2.8-.6v-2c-3.2.7-3.9-1.4-3.9-1.4-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.7.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C18.5 4.4 19.5 4.7 19.5 4.7c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .4.2.7.8.6a11.5 11.5 0 0 0 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/>
+        </svg>
+        Ver exemplo no GitHub
+      </a>
+    </div>
+  </footer>
+
+  <template id="card-tpl">
+    <form class="card character" novalidate>
+      <h2 class="character__title">Personagem</h2>
+
+      <div class="field">
+        <label>Gênero *</label>
+        <select name="genero" required>
+          <option value="">Selecione...</option>
+          <option value="masculino">Masculino</option>
+          <option value="feminino">Feminino</option>
+        </select>
+      </div>
+
+      <div class="row">
+        <div class="field">
+          <label>Banco</label>
+          <input type="number" name="banco" min="0" placeholder="Quantidade no banco">
+        </div>
+        <div class="field">
+          <label>Dinheiro no bolso</label>
+          <input type="number" name="bolso" min="0" placeholder="Quantidade no bolso">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="field">
+          <label>Level</label>
+          <input type="number" name="level" min="1" placeholder="Level">
+        </div>
+        <div class="field">
+          <label>V/M</label>
+          <input type="text" name="vm" placeholder="V/M">
+        </div>
+      </div>
+
+      <div class="checks">
+        <label class="check"><input type="checkbox" name="todas_habilidades"> Todas habilidades</label>
+        <label class="check"><input type="checkbox" name="corridinha_mod"> Corridinha mod</label>
+      </div>
+
+      <div class="field field--inline">
+        <label>Quantidade de trajes</label>
+        <input type="number" name="trajes_qtd" min="0" placeholder="Qtd" class="qtd-input">
+        <select name="trajes">
+          <option value="sem_mods">Sem mods</option>
+          <option value="uns_com_mod">Uns com mod</option>
+          <option value="todos_mods">Todos mods</option>
+        </select>
+      </div>
+
+      <h3 class="section">Veículos e Aeronaves</h3>
+
+      <div class="field-mod">
+        <div class="field">
+          <label>Veículos</label>
+          <input type="number" name="veiculos" min="0" placeholder="Qtd">
+        </div>
+        <label class="check"><input type="checkbox" name="veiculos_mods"> Tem mods?</label>
+      </div>
+
+      <div class="field-mod">
+        <div class="field">
+          <label>Aeronaves</label>
+          <input type="number" name="aeronaves" min="0" placeholder="Qtd">
+        </div>
+        <label class="check"><input type="checkbox" name="aeronaves_mods"> Tem mods?</label>
+      </div>
+
+      <div class="field-mod">
+        <div class="field">
+          <label>Veículos especiais</label>
+          <input type="number" name="veiculos_especiais" min="0" placeholder="Qtd">
+        </div>
+        <label class="check"><input type="checkbox" name="veiculos_especiais_mods"> Tem mods?</label>
+      </div>
+
+      <div class="field-mod">
+        <div class="field">
+          <label>Veículos Pegasus</label>
+          <input type="number" name="pegasus" min="0" placeholder="Qtd">
+        </div>
+        <label class="check"><input type="checkbox" name="sparrow"> Tem Sparrow</label>
+      </div>
+
+      <h3 class="section">Propriedades Móveis</h3>
+
+      <div class="checks checks--col">
+        <label class="check"><input type="checkbox" name="super_iate_galaxy"> Super Iate Galaxy</label>
+        <label class="check"><input type="checkbox" name="centro_operacoes_moveis"> Centro de Operações Móveis</label>
+        <label class="check"><input type="checkbox" name="avenger"> Avenger</label>
+        <label class="check"><input type="checkbox" name="terrorbyte"> Terrorbyte</label>
+        <label class="check"><input type="checkbox" name="kosatka"> Kosatka</label>
+        <label class="check"><input type="checkbox" name="laboratorio_toxico"> Laboratório tóxico</label>
+      </div>
+
+      <h3 class="section">Mais</h3>
+
+      <div class="checks checks--col">
+        <label class="check"><input type="checkbox" name="agencia"> Agência</label>
+        <label class="check"><input type="checkbox" name="escritorio"> Escritório</label>
+        <label class="check"><input type="checkbox" name="arena"> Arena</label>
+        <label class="check"><input type="checkbox" name="boate"> Boate</label>
+        <label class="check"><input type="checkbox" name="fliperama"> Fliperama</label>
+        <label class="check"><input type="checkbox" name="galpao_veiculos"> Galpão de veículos</label>
+        <label class="check"><input type="checkbox" name="oficina_tunning"> Oficina de tunning</label>
+        <label class="check"><input type="checkbox" name="centro_detencao"> Centro de detenção</label>
+        <label class="check"><input type="checkbox" name="fabrica_roupas"> Fábrica de roupas</label>
+        <label class="check"><input type="checkbox" name="ferro_velho"> Ferro velho</label>
+        <label class="check"><input type="checkbox" name="sede"> Sede</label>
+        <label class="check"><input type="checkbox" name="complexo"> Complexo</label>
+        <label class="check"><input type="checkbox" name="banker"> Banker</label>
+        <label class="check"><input type="checkbox" name="hangar"> Hangar</label>
+        <label class="check"><input type="checkbox" name="hangar_mckenzie"> Hangar McKenzie</label>
+        <label class="check"><input type="checkbox" name="garagem_eclipse_boulevard"> Garagem Eclipse Boulevard</label>
+        <label class="check"><input type="checkbox" name="garagem_club_vinewood"> Garagem Club Vinewood</label>
+        <label class="check"><input type="checkbox" name="garagem_3_andares_escritorio"> Garagem 3 andares escritório</label>
+        <label class="check"><input type="checkbox" name="cassino"> Cassino</label>
+        <label class="check"><input type="checkbox" name="machadinha_pedra"> Machadinha de pedra</label>
+      </div>
+
+      <div class="row">
+        <div class="field">
+          <label>Depósitos</label>
+          <input type="number" name="depositos" min="0" placeholder="Qtd">
+        </div>
+        <div class="field">
+          <label>Apartamentos</label>
+          <input type="number" name="apartamentos" min="0" placeholder="Qtd">
+        </div>
+      </div>
+
+    </form>
+  </template>
+
+  <script src="script.js"></script>
+</body>
+</html>
