@@ -23,7 +23,7 @@ const T = {
     com: "Centro de operações Móveis (C.O.M)", avenger: "Avenger", terrorbyte: "Terrorbyte", acidLab: "Laboratório Tóxico",
     secMore: "___ Mais",
     agency: "1 Agência", office: "1 Escritório", arena: "Arena", vehWarehouse: "1 Galpão de veículos",
-    apartments: "Apartamentos", warehouse: "Depósitos",
+    apartments: "Apartamentos", warehouse: "Depósitos", mansion: "Mansão",
     eclipse: "1 Garagem Eclipse Boulevard", vinewood: "1 Garagem Club Vinewood", garage3: "1 Garagem escritório 3 andares",
     casino: "Cassino", factory: "Fábrica de roupas", mckenzie: "Hangar McKenzie", detention: "Central de detenção",
     salvage: "Ferro velho", autoshop: "Oficina de tuning", arcade: "Fliperama", nightclub: "Boate",
@@ -48,7 +48,7 @@ const T = {
     com: "Mobile Operations Center", avenger: "Avenger", terrorbyte: "Terrorbyte", acidLab: "Acid Lab",
     secMore: "___ More",
     agency: "1 Agency", office: "1 Office", arena: "Arena", vehWarehouse: "1 Owned Vehicle Warehouse",
-    apartments: "Apartments", warehouse: "Owned Warehouse",
+    apartments: "Apartments", warehouse: "Owned Warehouse", mansion: "Mansion",
     eclipse: "1 Eclipse Blvd Garage", vinewood: "1 The Vinewood Club Garage", garage3: "1 Owned Garage 3-story office",
     casino: "Casino", factory: "Darnell Bros Garment Factory", mckenzie: "McKenzie Field Hangar", detention: "Ball Office",
     salvage: "Salvage Yard", autoshop: "Auto Shop Property", arcade: "Arcade", nightclub: "Nightclub Property",
@@ -118,6 +118,7 @@ function montarPersonagem(form, indice, t) {
   }
 
   const mais = [];
+  if (val(form, "mansao")) mais.push(`🌄 - ${val(form, "mansao")} ${t.mansion}`);
   if (checked(form, "agencia")) mais.push(`🏘️ - ${t.agency}`);
   if (checked(form, "escritorio")) mais.push(`🏬 - ${t.office}`);
   if (checked(form, "arena")) mais.push(`🏟️ - ${t.arena}`);
