@@ -8,7 +8,8 @@ const T = {
   pt: {
     character: "Personagem",
     genre: "Gênero", male: "Masculino", female: "Feminino",
-    bank: "Banco", millions: "Milhões", pocket: "Bolso",
+    bank: "Banco", pocket: "Bolso",
+    unidade: { milhoes: "Milhões", mil: "Mil", reais: "Reais" },
     level: "Level", km: "V/M",
     ability: "Habilidade", allMax: "Todas no máximo",
     jog: "Corridinha", modded: "Mod",
@@ -32,7 +33,8 @@ const T = {
   en: {
     character: "Character",
     genre: "Genre", male: "Male", female: "Female",
-    bank: "Bank", millions: "Millions", pocket: "Pocket",
+    bank: "Bank", pocket: "Pocket",
+    unidade: { milhoes: "Millions", mil: "Thousand", reais: "Reais" },
     level: "Level", km: "K/M Ratio",
     ability: "Ability", allMax: "All at maximum",
     jog: "Little jog", modded: "Modded",
@@ -78,8 +80,10 @@ function montarPersonagem(form, indice, t) {
   const L = [];
   L.push(`👤 - ${indice} ${t.character}`);
   L.push(`${t.genre}: ${val(form, "genero") === "feminino" ? t.female : val(form, "genero") === "masculino" ? t.male : "-"}`);
-  if (val(form, "banco")) L.push(`${t.bank}: ${val(form, "banco")} ${t.millions}`);
-  if (val(form, "bolso")) L.push(`${t.pocket}: ${val(form, "bolso")}`);
+  if (val(form, "banco"))
+    L.push(`${t.bank}: ${val(form, "banco")} ${t.unidade[val(form, "banco_unidade") || "milhoes"]}`);
+  if (val(form, "bolso"))
+    L.push(`${t.pocket}: ${val(form, "bolso")} ${t.unidade[val(form, "bolso_unidade") || "milhoes"]}`);
   if (val(form, "level")) L.push(`${t.level}: ${val(form, "level")}`);
   if (val(form, "vm")) L.push(`${t.km}: ${val(form, "vm")}`);
   if (checked(form, "todas_habilidades")) L.push(`${t.ability}: ${t.allMax}`);
