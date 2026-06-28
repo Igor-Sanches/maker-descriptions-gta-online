@@ -12,12 +12,16 @@
 
 * { box-sizing: border-box; }
 
+html, body { overflow-x: hidden; }
+
 body {
   margin: 0;
   font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   background: var(--bg);
   color: var(--text);
 }
+
+input, select, textarea { max-width: 100%; }
 
 .profile {
   display: inline-flex;
@@ -145,7 +149,7 @@ body {
 
 .cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
   gap: 20px;
 }
 
@@ -267,4 +271,10 @@ textarea { resize: vertical; }
 @media (max-width: 480px) {
   .card { padding: 20px; }
   .row { grid-template-columns: 1fr; }
+  .field--inline { flex-wrap: wrap; }
+  .field--inline label { width: 100%; margin-bottom: 6px; white-space: normal; }
+  .field--inline .qtd-input { width: 80px; }
+  .field--inline select { flex: 1 1 120px; }
+  .field-mod { flex-wrap: wrap; }
+  .field-mod .check { padding-bottom: 0; }
 }
