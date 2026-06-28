@@ -47,7 +47,7 @@ const T = {
     secMore: "___ More",
     agency: "1 Agency", office: "1 Office", arena: "Arena", vehWarehouse: "1 Owned Vehicle Warehouse",
     apartments: "Apartments", warehouse: "Owned Warehouse",
-    eclipse: "1 Eclipse Blve Garage", vinewood: "1 The Vinewood Club Garage", garage3: "1 Owned Garage 3-story office",
+    eclipse: "1 Eclipse Blvd Garage", vinewood: "1 The Vinewood Club Garage", garage3: "1 Owned Garage 3-story office",
     casino: "Casino", factory: "Darnell Bros Garment Factory", mckenzie: "McKenzie Field Hangar", detention: "Ball Office",
     salvage: "Salvage Yard", autoshop: "Auto Shop Property", arcade: "Arcade", nightclub: "Nightclub Property",
     facility: "Facility (Complete with hook)", hangar: "Hangar", bunker: "Bunker (All complete research)",
